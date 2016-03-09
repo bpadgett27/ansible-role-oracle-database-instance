@@ -8,5 +8,5 @@
     msg: "an oracle instance is already installed with this sid {{ oracle_database_sid }}"
   when: orafile.stat.exists
 
-- include: create-instance-11g.yml
+- include: configure-instance-11g.yml
   when: not orafile.stat.exists and oracle_database_version == '11g'

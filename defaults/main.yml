@@ -1,6 +1,8 @@
 ---
 # defaults file for oracle-database-instance
 oracle_database_user: oracle
+oracle_database_version: 11g
+oracle_database_oracle_home: /opt/oracle/product/oracle_home
 # instance variables
 oracle_database_sid: #SAMPLEDB
 oracle_database_global_name: #SAMPLEDB
