@@ -156,7 +156,7 @@ galaxy_info:
   #  - wheezy
 
   galaxy_tags:
-    - oracle_database
+    - oracle
     - database
     - database:sql
     # List tags for your role here, one per line. A tag is
