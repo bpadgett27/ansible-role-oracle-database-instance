@@ -4,7 +4,7 @@
   template: src=dbca-11g.rsp.j2 dest=/tmp/dbca.rsp
 
 - name: create database instance
-  command: "{{ oracle_database_oracle_home }}/bin/dbca -silent -responseFile /tmp/dbca.rsp"
+  command: "{{ oracle_database_oracle_home }}/bin/dbca -silent -responseFile /tmp/dbca.rsp >> /tmp/dbca.log"
   args:
     creates: "{{ oracle_database_oracle_home }}/dbs/spfile{{ oracle_database_sid }}.ora"
   register: command_result
