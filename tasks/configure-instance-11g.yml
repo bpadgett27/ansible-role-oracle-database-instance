@@ -10,6 +10,9 @@
   register: command_result
   failed_when: "'100% complete' not in command_result.stdout_lines"
 
+- debug:
+    var: command_result
+
 - name: add oratab
   template:
     src: oratab-11g.j2

@@ -1,18 +1,15 @@
 ---
-# defaults file for oracle-database-instance
-oracle_database_user: oracle
 oracle_database_version: 11g
-oracle_database_oracle_home: /opt/oracle/product/oracle_home
-# instance variables
-oracle_database_sid: #SAMPLEDB
-oracle_database_global_name: #SAMPLEDB
-oracle_database_template_name: #General_Purpose.dbc
-oracle_database_admin_password: #welcome1
-oracle_database_auto_memory_mgnt: #TRUE
+oracle_database_oracle_home: /home/oracle/product/oracle_home
+
+oracle_database_sid: ORADB
+oracle_database_global_name: ORADB
+oracle_database_template_name: General_Purpose.dbc
+oracle_database_admin_password: welcome1
+oracle_database_auto_memory_mgnt: TRUE
 oracle_database_memory_percentage: 80
 oracle_database_memory_total: 1024
-oracle_database_type: #MULTIPURPOSE
-# listener variables
-oracle_database_listener_name: #LISTENER
-oracle_database_listener_port: #1521
-oracle_database_init_params: #JAVA_JIT_ENABLED=FALSE
+oracle_database_type: MULTIPURPOSE
+oracle_database_listener_name: LISTENER
+oracle_database_listener_port: 1521
+oracle_database_init_params: JAVA_JIT_ENABLED=FALSE
