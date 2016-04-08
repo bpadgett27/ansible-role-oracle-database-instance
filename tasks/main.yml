@@ -1,22 +1,16 @@
 ---
 # tasks file for oracle-database-instance
+- include: validate.yml
 
-- name: create listener oracle database
-  include: configure-listener.yml
+- include: configure-listener.yml
   become: yes
   become_user: "{{ oracle_database_user }}"
-  tags:
-    - listener
+  when: not oracle_database_instance_already_created
 
-- name: configure instance oracle database
-  include: configure-instance.yml
+- include: configure-instance.yml
   become: yes
   become_user: "{{ oracle_database_user }}"
-  tags:
-    - instance
+  when: not oracle_database_instance_already_created
 
-- name: configure instance service
-  include: configure-instance-service.yml
+- include: configure-instance-service.yml
   become: yes
-  tags:
-    - configureservice
