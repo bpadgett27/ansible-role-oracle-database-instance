@@ -36,7 +36,6 @@
    -
      start: "ORACLE_SID="
      end: "{{ oracle_database_sid }}"
-
    -
      start: "export ORACLE_SID"
      end: ""
