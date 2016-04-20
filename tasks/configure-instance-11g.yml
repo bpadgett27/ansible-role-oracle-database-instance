@@ -4,7 +4,7 @@
   template: src=dbca-11g.rsp.j2 dest=/tmp/dbca.rsp
 
 - name: create database instance
-  shell: "{{ oracle_database_oracle_home }}/bin/dbca -silent -responseFile /tmp/dbca.rsp >> /tmp/dbca.log"
+  shell: "{{ oracle_database_oracle_home }}/bin/dbca -silent -responseFile /tmp/dbca.rsp"
   args:
     creates: "{{ oracle_database_oracle_home }}/dbs/spfile{{ oracle_database_sid }}.ora"
   register: command_result
@@ -13,9 +13,9 @@
 - debug:
     var: command_result
 
-- name: fail if not success
-  fail: msg="the command failed"
-  when: "''100% complete' not in command_result.stdout_lines"
+#- name: fail if not success
+#  fail: msg="the command failed"
+#  when: "''100% complete' not in command_result.stdout_lines"
 
 - name: add oratab
   template:
