@@ -21,7 +21,7 @@
 
 - name: add oratab
   template:
-    src: oratab-11g.j2
+    src: oratab.j2
     dest: /etc/oratab
     owner: oracle
     group: oinstall
