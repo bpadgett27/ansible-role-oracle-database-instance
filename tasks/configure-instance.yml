@@ -1,12 +1,43 @@
 ---
 #
-- name: evaluate oracle database instance
-  stat: path="{{ oracle_database_oracle_home }}/dbs/spfile{{ oracle_database_sid }}.ora"
-  register: orafile
+- name: create dbca response file
+  template:
+    src: "dbca-{{ oracle_database_version }}.rsp.j2"
+    dest: /tmp/dbca.rsp
+
+- name: create database instance
+  shell: "{{ oracle_database_oracle_home }}/bin/dbca -silent -responseFile /tmp/dbca.rsp"
+  args:
+    creates: "{{ oracle_database_oracle_home }}/dbs/spfile{{ oracle_database_sid }}.ora"
+  register: command_result
+  ignore_errors: yes
 
 - debug:
-    msg: "an oracle instance is already installed with this sid {{ oracle_database_sid }}"
-  when: orafile.stat.exists
+    var: command_result
 
-- include: configure-instance-11g.yml
-  when: not orafile.stat.exists and oracle_database_version == '11g'
+#- name: fail if not success
+#  fail: msg="the command failed"
+#  when: "''100% complete' not in command_result.stdout_lines"
+
+- name: add oratab
+  template:
+    src: oratab-11g.j2
+    dest: /etc/oratab
+    owner: oracle
+    group: oinstall
+  become: yes
+  become_user: root
+
+- name: set oracle sid
+  lineinfile:
+   dest: "/home/oracle/.bash_profile"
+   regexp: "^{{ item.start }}"
+   line: "{{ item.start }}{{ item.end }}"
+   insertbefore: "export PATH"
+  with_items:
+   -
+     start: "ORACLE_SID="
+     end: "{{ oracle_database_sid }}"
+   -
+     start: "export ORACLE_SID"
+     end: ""

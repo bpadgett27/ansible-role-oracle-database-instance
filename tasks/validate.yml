@@ -1,5 +1,5 @@
 - name: validate oracle database instance is already created
-  stat: path="{{ oracle_database_oracle_home }}/dbs/{{ oracle_database_sid }}.ora"
+  stat: path="{{ oracle_database_oracle_home }}/dbs/spfile{{ oracle_database_sid }}.ora"
   register: ora
   become: yes
 
