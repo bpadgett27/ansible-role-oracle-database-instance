@@ -1,7 +1,7 @@
 ---
 #
 - set_fact:
-    service_name: "oracle-database-{{ oracle_database_version }}"
+    service_name: oracle-db
 
 - name: define service
   template:
