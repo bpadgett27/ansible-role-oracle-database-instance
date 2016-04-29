@@ -3,3 +3,5 @@
 oracle_database_user: oracle
 oracle_database_install_group: oinstall
 oracle_database_instance_already_created: false
+oracle_database_create_container_database: false
+oracle_database_pdb_name: 
