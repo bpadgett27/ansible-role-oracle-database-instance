@@ -5,9 +5,6 @@
   become: yes
 
 - debug:
-    var: ora
-
-- debug:
     msg: "oracle database instance is already created with this name: {{ oracle_database_sid }}"
   when: ora.stat.exists
 
