@@ -2,7 +2,7 @@
 #
 - name: set netca response file
   template:
-    src: "netca-{{ oracle_database_version }}.rsp.j2 "
+    src: "netca-{{ oracle_database_version }}.rsp.j2"
     dest: /tmp/netca.rsp
 
 - name: configure listener
